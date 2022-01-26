@@ -158,8 +158,8 @@ exports.getAllCarts = getAllCarts;
 const sendEmail = (req, res) => {
     const auth = {
         auth: {
-            api_key: '49b85a72e4731abb55598fceb851908c-054ba6b6-6aab6ad0',
-            domain: 'sandboxe8970bf5967845e497db0af64f4cf651.mailgun.org'
+            api_key: process.env.MAILGUN_KEY,
+            domain: process.env.MAILGUN_DOMAIN
         }
     };
     const transporter = nodemailer_1.default.createTransport((0, nodemailer_mailgun_transport_1.default)(auth));
