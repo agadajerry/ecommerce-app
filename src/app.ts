@@ -44,13 +44,7 @@ app.use(
 
 
 
-app.use(
-  cors({
-    origin: "https://ecommerce-api-server.herokuapp.com", // allow to server to accept request from different origin
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    credentials: true, // allow session cookie from browser to pass through
-  })
-);
+app.use(cors();
 app.use(expressLayouts);
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "../views"));
