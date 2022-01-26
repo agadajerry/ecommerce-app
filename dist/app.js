@@ -33,11 +33,7 @@ app.use(session({
     cookie: { maxAge: 180 * 60 * 3 * 4000 }
 }));
 // Passport middleware
-app.use((0, cors_1.default)({
-    origin: "https://jerrystore.netlify.app",
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    credentials: true, // allow session cookie from browser to pass through
-}));
+app.use((0, cors_1.default)());
 app.use(expressLayouts);
 app.set("view engine", "ejs");
 app.set("views", path_1.default.join(__dirname, "../views"));
