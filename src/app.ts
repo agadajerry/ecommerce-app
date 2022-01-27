@@ -29,7 +29,7 @@ const store = new mongoDBStore({
 
 app.use(
   cors({
-    origin: "https://ecommerce-api-server.herokuapp.com/product", // allow to server to accept request from different origin
+    origin: "https://ecommerce-api-server.herokuapp.com", // allow to server to accept request from different origin
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     credentials: true, // allow session cookie from browser to pass through
   })
