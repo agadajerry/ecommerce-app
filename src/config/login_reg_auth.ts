@@ -57,12 +57,10 @@ export const userRegistration = async (req: Request, res: Response) => {
 
 //Login routes
 export const userLogin =  (req: Request, res: Response) => {
-
-try{
     const email = req.body.email;
     const password = req.body.password;
 
-    if (!email || !password) {
+    if (!email || !password.length) {
         res.status(404).json("empty empty fields")
         return;
     }
@@ -101,12 +99,10 @@ try{
               name: user.fullname,
               userId:user._id
             });
-        } 
+        }
+        
 
     });
-}catch(err:any){
-  console.error(err)
-}
 
 }
 export async function logout(req: Request, res: Response) {
