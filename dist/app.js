@@ -8,7 +8,7 @@ const express_1 = __importDefault(require("express"));
 const path_1 = __importDefault(require("path"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const morgan_1 = __importDefault(require("morgan"));
-const cors_1 = __importDefault(require("cors"));
+const cors = require("cors");
 const product_routes_1 = __importDefault(require("./routes/product_routes"));
 const connectDb_1 = __importDefault(require("./config/connectDb"));
 const session = require("express-session");
@@ -33,7 +33,7 @@ app.use(session({
     cookie: { maxAge: 180 * 60 * 3 * 4000 }
 }));
 // Passport middleware
-app.use((0, cors_1.default)());
+app.use(cors());
 app.use(expressLayouts);
 app.set("view engine", "ejs");
 app.set("views", path_1.default.join(__dirname, "../views"));
