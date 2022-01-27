@@ -189,8 +189,8 @@ export const sendEmail = (req:Request, res: Response)=>{
  const  auth = {
    
     auth:{
-      api_key:process.env.MAILGUN_KEY as string,
-      domain:process.env.MAILGUN_DOMAIN as string
+      api_key:'49b85a72e4731abb55598fceb851908c-054ba6b6-6aab6ad0',
+      domain:'sandboxe8970bf5967845e497db0af64f4cf651.mailgun.org'
     }
   };
 

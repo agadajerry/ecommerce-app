@@ -46,7 +46,7 @@ app.use(
 
 app.use(
   cors({
-    origin: "https://ecommerce-api-server.herokuapp.com/product", // allow to server to accept request from different origin
+    origin: "http://localhost:4000", // allow to server to accept request from different origin
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     credentials: true, // allow session cookie from browser to pass through
   })

@@ -34,7 +34,7 @@ app.use(session({
 }));
 // Passport middleware
 app.use((0, cors_1.default)({
-    origin: "https://ecommerce-api-server.herokuapp.com/product",
+    origin: "http://localhost:4000",
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     credentials: true, // allow session cookie from browser to pass through
 }));
