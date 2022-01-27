@@ -1,6 +1,5 @@
 import createError, { HttpError } from "http-errors";
 import express, { NextFunction, Request, Response } from "express";
-import path from "path";
 import cookieParser from "cookie-parser";
 import logger from "morgan";
 import cors from "cors";
@@ -8,7 +7,6 @@ import product_routes from "./routes/product_routes";
 import connect from "./config/connectDb";
 const session = require("express-session");
 require("dotenv").config();
-const expressLayouts = require("express-ejs-layouts");
 const port = process.env.PORT || 4000;
 const app = express();
 const mongoDBStore = require ("connect-mongodb-session")(session);
@@ -25,22 +23,7 @@ const store = new mongoDBStore({
   collection:"session"
 })
 
-app.use(
-  session({
-    secret: process.env.SESSION_SECRET,
-    resave: true,
-    saveUninitialized: true,
-    store: store,
-    cookie: {maxAge: 180 * 60 * 3 * 4000}
 
-  })
-);
-
-
-
-
-
-// Passport middleware
 
 
 
@@ -51,27 +34,15 @@ app.use(
     credentials: true, // allow session cookie from browser to pass through
   })
 );
-app.use(expressLayouts);
-app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "../views"));
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, "../public")));
 
 //routes functions
 
 app.use("/product", product_routes);
 
-
-app.use(
-  cors({
-    origin: "https://ecommerce-api-server.herokuapp.com/product", // allow to server to accept request from different origin
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    credentials: true, // allow session cookie from browser to pass through
-  })
-);
 
 // catch 404 and forward to error handler
 app.use(function (req: Request, res: Response, next: NextFunction) {
