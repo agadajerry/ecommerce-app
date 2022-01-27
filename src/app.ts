@@ -3,7 +3,7 @@ import express, { NextFunction, Request, Response } from "express";
 import path from "path";
 import cookieParser from "cookie-parser";
 import logger from "morgan";
-import cors from "cors";
+const  cors = require("cors");
 import product_routes from "./routes/product_routes";
 import connect from "./config/connectDb";
 const session = require("express-session");
@@ -44,7 +44,7 @@ app.use(
 
 
 
-app.use(cors();
+app.use(cors())
 app.use(expressLayouts);
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "../views"));
