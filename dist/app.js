@@ -24,7 +24,7 @@ const store = new mongoDBStore({
     collection: "session"
 });
 app.use((0, cors_1.default)({
-    origin: "https://ecommerce-api-server.herokuapp.com",
+    origin: "https://jerrystore.netlify.app",
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     credentials: true, // allow session cookie from browser to pass through
 }));
