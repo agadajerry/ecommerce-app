@@ -8,7 +8,7 @@ const express_1 = __importDefault(require("express"));
 const path_1 = __importDefault(require("path"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const morgan_1 = __importDefault(require("morgan"));
-const cors = require("cors");
+const cors_1 = __importDefault(require("cors"));
 const product_routes_1 = __importDefault(require("./routes/product_routes"));
 const connectDb_1 = __importDefault(require("./config/connectDb"));
 const session = require("express-session");
@@ -33,7 +33,11 @@ app.use(session({
     cookie: { maxAge: 180 * 60 * 3 * 4000 }
 }));
 // Passport middleware
-app.use(cors());
+app.use((0, cors_1.default)({
+    origin: "https://ecommerce-api-server.herokuapp.com/product",
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    credentials: true, // allow session cookie from browser to pass through
+}));
 app.use(expressLayouts);
 app.set("view engine", "ejs");
 app.set("views", path_1.default.join(__dirname, "../views"));
