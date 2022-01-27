@@ -189,7 +189,7 @@ export const sendEmail = (req:Request, res: Response)=>{
  const  auth = {
    
     auth:{
-     api_key:process.env.MAILGUN_KEY as string,
+      api_key:process.env.MAILGUN_KEY as string,
       domain:process.env.MAILGUN_DOMAIN as string
     }
   };

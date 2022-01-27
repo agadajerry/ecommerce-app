@@ -46,7 +46,7 @@ app.use(
 
 app.use(
   cors({
-    origin: "http://localhost:4000", // allow to server to accept request from different origin
+    origin: "https://ecommerce-api-server.herokuapp.com/product", // allow to server to accept request from different origin
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     credentials: true, // allow session cookie from browser to pass through
   })
@@ -64,6 +64,14 @@ app.use(express.static(path.join(__dirname, "../public")));
 
 app.use("/product", product_routes);
 
+
+app.use(
+  cors({
+    origin: "https://ecommerce-api-server.herokuapp.com/product", // allow to server to accept request from different origin
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    credentials: true, // allow session cookie from browser to pass through
+  })
+);
 
 // catch 404 and forward to error handler
 app.use(function (req: Request, res: Response, next: NextFunction) {

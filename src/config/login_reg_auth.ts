@@ -57,10 +57,12 @@ export const userRegistration = async (req: Request, res: Response) => {
 
 //Login routes
 export const userLogin =  (req: Request, res: Response) => {
+
+try{
     const email = req.body.email;
     const password = req.body.password;
 
-    if (!email || !password.length) {
+    if (!email || !password) {
         res.status(404).json("empty empty fields")
         return;
     }
@@ -83,7 +85,7 @@ export const userLogin =  (req: Request, res: Response) => {
           //save the jwt token
 
           const maxAge = 1 * 24 * 60 * 60;
-          const access_token = jwt.sign({ email:email }, process.env.JWT_SECRET_KEY,
+          const access_token = await jwt.sign({ email:email }, process.env.JWT_SECRET_KEY,
             {
               expiresIn: maxAge,
             }
@@ -99,10 +101,12 @@ export const userLogin =  (req: Request, res: Response) => {
               name: user.fullname,
               userId:user._id
             });
-        }
-        
+        } 
 
     });
+}catch(err:any){
+  console.error(err)
+}
 
 }
 export async function logout(req: Request, res: Response) {
