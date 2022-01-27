@@ -71,7 +71,7 @@ const userLogin = (req, res) => {
         else {
             //save the jwt token
             const maxAge = 1 * 24 * 60 * 60;
-            const access_token = jwt.sign({ email: email }, process.env.JWT_SECRET_KEY, {
+            const access_token = await jwt.sign({ email: email }, process.env.JWT_SECRET_KEY, {
                 expiresIn: maxAge,
             });
             res.cookie("jwt", access_token, { httpOnly: true });
